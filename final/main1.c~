@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int x = 2;
+void set(int x){
+  x = 3;
+}
+
+int main(void){
+  set(x);
+  printf("%d",x);
+}
+
+

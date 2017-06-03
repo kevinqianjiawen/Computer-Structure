@@ -1,0 +1,135 @@
+/* main.c ---
+ *
+ * Filename: main.c
+ * Description:
+ * Author: Qingyue Long (qinglong) and Maggie Oates (moates)
+ * Maintainer:
+ * Created: Thu Jan 10 11:23:43 2013
+ /* Code: */
+
+#include <stm32f30x.h> // Pull in include files for F30x standard drivers
+#include <f3d_uart.h>
+#include <f3d_user_btn.h>
+#include <f3d_lcd_sd.h>
+#include <f3d_i2c.h>
+#include <f3d_accel.h>
+#include <f3d_mag.h>
+#include <stdio.h>
+#include <math.h>
+
+#define TIMER 20000
+
+int main(void) {
+  setvbuf(stdin, NULL, _IONBF, 0);
+  setvbuf(stdout, NULL, _IONBF, 0);
+  setvbuf(stderr, NULL, _IONBF, 0);
+ 
+  // Set up your inits before you go ahead
+  f3d_i2c1_init();
+  delay(10);
+  f3d_accel_init();
+  delay(10);
+  f3d_mag_init();
+  delay(10);
+  f3d_uart_init();
+  delay(10);
+  f3d_lcd_init();
+  f3d_user_btn_init();
+
+  int arrow_length = 30;
+  uint16_t background = WHITE;
+
+  float mag_data[3];
+  float accel_data[3];
+
+  //in degrees
+  float pitch;
+  float roll;
+
+  //in radians
+  float heading;
+
+  float xhead, yhead;
+  int show_tilt = 1;
+
+  //positions on the LCD
+  int x,y;
+  
+  float a_x, a_y, a_z;
+  float m_x, m_y, m_z;
+  
+  
+  f3d_lcd_fillScreen(background);
+  
+  while(1){
+    f3d_mag_read(mag_data);
+    f3d_accel_read(accel_data);
+    a_x=accel_data[0];
+    a_y=accel_data[1];
+    a_z=accel_data[2];
+    m_x=mag_data[0];
+    m_y=mag_data[1];
+    m_z=mag_data[2];  
+    pitch = atanf(a_x/sqrt(pow(a_y, 2) + pow(a_z,2)));
+    roll = atanf(a_y/sqrt(pow(a_x, 2) + pow(a_z,2))); 
+    if(user_btn_read()){
+      show_tilt  = (show_tilt ? 0 : 1);	
+      }
+
+    if(show_tilt){
+      //Tilt
+      int scaled_pitch = pitch / M_PI * (ST7735_width / 2.0);
+      int scaled_roll =  roll / M_PI * (ST7735_height / 2.0);
+      if (scaled_pitch>0){
+        uint16_t pitch_bar[scaled_pitch-1];
+	for (y = 0; y < scaled_pitch ; y++){
+            pitch_bar[y] = RED;
+	    f3d_lcd_setAddrWindow (ST7735_width/2-5, ST7735_height/2, ST7735_width/2+5,scaled_pitch,MADCTLGRAPHICS);
+	  }
+        for (y=0;y<scaled_pitch+1; y++) {
+            f3d_lcd_pushColor(pitch_bar[y], 10);
+         } 
+      
+      }
+    }
+      else{
+	//Compass
+   
+
+    
+    xhead=m_x * cos(pitch)+ m_z * sin(pitch);
+    yhead=m_x * sin(roll) * sin(pitch) + 
+          m_y * cos(roll) - 
+          m_z * sin(roll) * cos(pitch); 
+
+    heading = atanf(yhead/xhead);
+    
+
+
+    printf("%f\n", heading);
+   
+    x = arrow_length*cos(heading) + (ST7735_width / 2.0);
+    y = arrow_length*sin(heading) + (ST7735_height / 2.0);
+
+    //printf("X: %d, Y: %d\n", x, y);
+    f3d_lcd_drawChar(x, y, 'O', BLUE, background);
+
+ 
+    delay(50);
+   f3d_lcd_drawChar(x, y, 'O', background, background);
+    
+      }
+
+
+  }
+}
+
+#ifdef USE_FULL_ASSERT
+void assert_failed(uint8_t* file, uint32_t line) {
+  /* Infinite loop */
+  /* Use GDB to find out why we're here */
+  while (1);
+}
+#endif
+
+/* main.c ends here */

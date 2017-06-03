@@ -1,0 +1,28 @@
+Name: Qingyue Long (User:qinglong)
+Partner: Jiawen Qian (User:jiawqian)
+
+1.What are specs of the board you are using (ex. Speed, RAM, Flash)?
+In lab we use STM32F303 board. The board has ARM Cortex-M4 core.
+Core Coupled Memory SRAM (Routine Booster), a specific memory architecture boosting time-critical routines, accelerating the performance by 43% compared to Flash execution.
+
+2.What does GPIO stand for?
+GPIO stands for general purpose input/output.
+
+4.What are the Port and Pin Numbers of the two Green LEDs?
+
+PE15 and PE11: pin 15 port E and pin 11 port E.
+
+5.What are the public attributes of the GPIO_InitTypeDef Struct?
+
+Public Attributes
+
+uint32_t 	        GPIO_Pin
+GPIOMode_TypeDef 	GPIO_Mode
+GPIOSpeed_TypeDef 	GPIO_Speed
+GPIOOType_TypeDef 	GPIO_OType
+GPIOPuPd_TypeDef 	GPIO_PuPd
+
+I learned how to initialize and control the button and leds on STM32F303 board. The function GPIO_ReadInputDataBit is really helpful when we want to take use of button, the function will returns 1 if the button is pressed, otherwise returns 0. Each time before we manipulate the leds and buttons on STM32, we need to first intialize it. And GPIOE->BSRR means set the GPIOE to 1, it can be used to turn on LEDS and GPIOE->BRR means set the GPIOE to 0, which means turn off. 
+
+
+

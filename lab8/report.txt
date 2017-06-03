@@ -1,0 +1,30 @@
+Author:Qingyue Long(qinglong) 
+Partner:Maggie Oates (moates) and Qingyue Long(qinglong)
+
+Q1) In previous labs, adding a peripheral has required pin initializations. 
+Why were able to add the nunchuk without initializing anything?
+
+The nunchuk is a device, a slave to the I2C master. All the initialization is in the i2c src file.
+
+
+Q2) What are the major differences between these two functions and what does that imply about communicating with the nunchuk?
+
+There's no specification on what byte mode when reading through the nunchuk.
+
+
+Q3) What do all of these variables correspond to in the nunchuk? Hint: It may be best to answer this question after the checkpoint
+jx : joystick's x direction
+jy : joystick's y direction
+ax, ay, and az are the axes of the accelerometer, used to calculate the 
+joystick's z axis
+c : a flag for whether the c button is pressed
+z : a flag for whether the z button is pressed
+
+
+Q4) Explain the code below.
+Setting z and c to 1 or 0.
+
+Difficulties: We had trouble to make draw gyro work at the beginning, but then we realize was getting stack somewhere, so we move
+the initialize of the gyro in the front. Then problem solved.
+
+I learned how to inteprete and manipulate the Nunchuk data.

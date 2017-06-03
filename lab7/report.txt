@@ -1,0 +1,35 @@
+lab7
+Author: Qingyue Long (qinglong)
+Partner: Maggie Oates (moates)
+
+Q1)
+There are 14 pins
+1 Vdd_IO Power supply for I/O pins
+2 SCL Signal interface I2C serial clock (SCL)
+3 SDA Signal interface I2C serial data (SDA)
+4 INT2 Inertial Interrupt 2
+5 INT1 Inertial Interrupt 1
+6 C1 Reserved capacitor connection (C1)
+7 GND 0 V supply
+8 Reserved Leave unconnected
+9 DRDY Data ready
+10 Reserved Connect to GND
+11 Reserved Connect to GND
+12 SETP S/R capacitor connection (C2)
+13 SETC S/R capacitor connection (C2)
+14 Vdd Power supplyElectrical Characteristics
+The accelerometer/magnetometer is from 2.16 ~ 3.6
+The accelerometer is located right side of the pins and below the user usb port.
+
+Q2)
+To keep receiving and updating the data from accelerometer and the magnetometer.
+
+Q3)
+The for loop converts the accelerometer raw data to readable data for human, thus we can understand easily.
+
+Q4)
+Tilt compass would be more accurate. Since when the board is tilted, the pitch and roll angle would change.
+
+Difficulties
+I am still confused about the calculation of heading. 
+And I learned what is pitch, roll and yaw. 

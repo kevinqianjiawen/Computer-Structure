@@ -1,0 +1,12 @@
+Q1.) We set the chip select pin high/low to decide whether accept and response to the data, which is the property of SPI. High means SPI putting SPI bus. Low means waiting for other data
+
+Q2.) I would replace the loop by calling f3d_delay_uS() function. Timers will be more accurate.
+
+Q3.) DMA can speed the process of reading file, without it the processor can only do one thing at a time
+
+Q4.) The file allocation table (FAT) keeps the track of the data and file location. If the address is incorrect, the FAT will not accept any file.
+
+
+Q5.) What is the difference between FAT16 and FAT32? 
+FAT32 support more size, allows the root directory to grow.
+FAT16 is much more restrict

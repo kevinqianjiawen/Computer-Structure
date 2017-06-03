@@ -1,0 +1,17 @@
+Qingyue Long (qinglong)
+Partner: Jiawen Qian (jiawqian)
+
+Q1. What is the significance of the peripheral base address? Where does it point?
+The significance of the peripheral base address is to enable us to locate where to transfer data from easily. It points to SPIx -->DR
+Q2. Why is it necessary to enable incrementing as was done in this step? What will the DMA controller do in response to this configuration.
+    	It points to the address of next data.
+Q3. Why is this line of the code necessary?
+    Detect whether the communication is completed.
+Q4. For transfers of less than 4 bytes, what do you think is the reason for not using the xchng_datablock functions?
+    	Not efficient.
+Q5. Why is it important for the DMA controller and the audio player to work on different portions of Audiobuf.
+    	In case the play speed be affected.
+Difficulties:
+	In our code, we can only select files after the previous selected one stop playing.
+Learn:
+	I learned how to read and play audio files in SD card.

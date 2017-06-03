@@ -1,0 +1,23 @@
+ Author: Qingyue Long(qinglong)
+ Partner: Felli, Christopher James, cfelli
+ Assignment: Lab 6
+
+1.Advantage: It's relative easy to check the errors by showing results
+  Disadvantage: slow down the system so much
+
+2.spiReadWrite getting what to print on the LCD screen on the machine.
+  So, we need a higher level to take use of the informations going through
+  the spiReadWrite.
+
+3.LCD_CS_Deassert()
+  initialize the machine control, makes rectangles and sets the color.
+  It is important because it is a macro to control chip selet and to keep method work.
+
+4.Since ASCII code already defined in the program, and characters are defined as an unsigned 8bit string, from 0 to 255,  So the machine interprets the ASCII code to machine language.
+
+5.fillscreen2 takes about 80 millisenconds and fillscreen takes about 200 milliseconds.
+  Instead of sending each individual pixel, the fillscreen2 send an array, so it draws a line at one time.
+
+Difficulties
+The function drawpixel is really easy to implement.
+But I had really difficult time to figure out how does setAddrWindow and pushcolor works, it seems really easy to push color start from left margin. But when I tried to start from the middle or other position, the result is often out of my expection. 

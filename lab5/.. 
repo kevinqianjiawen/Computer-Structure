@@ -1,0 +1,19 @@
+1.What does the CS pin do (the CS pin is called SS in the lab manual)?
+   The CS (Chip Select) pin is used to enable the correct device for communication.It is used to signal to the slave when a transfer of data is starting and ending.
+
+2.Why do you set the CS high at the end of the pin initializations? What other functions in f3d_gyro.c change CS from low to high or high to low?
+ CS is set to high in order to stop the communication of the device which the CS was put to low.
+ GYRO_CS_LOW/GYRO_CS_HIGH/f3d_gyro_read/f3d_gyro_write
+
+3.How do you hook up multiple peripherals on one SPI bus?
+Initialize the drivers first, and then connet necessary wires.
+
+4.The STM has an Operating Frequency of 72 MHz. When initializing SPI1, what do you set the baud rate prescaler to? What is the resulting SPI clock frequency?
+ Baud rate:8 frequency:9
+
+5.Does a peripheral (slave) need to be configured with the transmission speed before it can communicate with the microcontroler (master)? Why would you want to be able to do on-the-fly changes in transmission speed?
+ Yes, it need to be configured with the transmission. In order to accomodate different needs of communication.
+
+Difficulties: I had really hard time to figure out how to make the getChar work. Since the while loop in the getchar seems keep the programme there forever. But I figured it out by adding another condition to measure weather we type 'x''y''z'or not in the main.c.
+
+I learned how to combine the functions which we created in ealier labs together.  

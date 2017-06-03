@@ -1,0 +1,19 @@
+Author: Qingyue Long
+Partner:  Kyle Lemmel
+User name: qinglong, klemmel
+
+1.How many connections are required to communicate over UART?
+   Four, RX, TX,usb connection and gnd connections.
+2.What is the purpose of "alternate functions" for GPIO pins?
+   The designer can decide which port is most appropriate given that some pin arrangements are mutually exclusive and prevent the use of the peripheral for other purpo
+ses.
+3. Define "baud rate" in your own words.
+ Baud rate is the speed of transfering data throughout a system. 9600 baud means that the serial port is capable of transferring a maximum of 9600 bits per second.
+4.Why do we need newlib_stubs? Specifically, is there a reason that printf won't work on the board without it?
+Newlib is to optimize the putchar and printstring version that we made.
+This is an embedded toolchain some stub functions known as System Functions must be provided by the embedded system that would normally be provided by a host operating
+system.
+5.Give an example of a situation in which the Salae Logic Analyzer is the best debugging method and include a screen shot of the Logic application.
+  When things seem to be working but we have no idea what is going on in the transferring process between the computer and the microcontroller.
+6. I learned different connections to comunicate over UART. And how to test the connection and transfer data.
+   difficulties: I have some problem with wc at the first time, then I figured it out, it was the problem associated with the position of 'while' clause.

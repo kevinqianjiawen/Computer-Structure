@@ -1,0 +1,23 @@
+Plane shooting game
+---------------------
+Jiawen Qian (jiawqian)
+Qingyue Long (qinglong)
+
+Player has a wii nunchuk to control the flying direction of plane.
+And press C-button to lauch bullets. There are also enermy's planes coming
+from opposite direction. Player should either shoot it or escape away from it.
+player has 5 bloods at the beginning. And each time when player's plane collideswith enermy's, reducing a single blood. We player's plane collide with heart, blood will increse one. If the number of blood equals zero, then gameover. User should press the reset button to restart game.
+
+Task Breakdown:
+- Come up the idea: Collaborative
+- convert_pixel function: Jiawen
+- draw_image function: Jiawen
+- Store image to array: Qingyue
+- Solve the image trash problem: Jiawen
+- Two collision function: Qingyue
+- Play autio: Jiawen
+- malloc the space for 2-D image array: Qingyue
+- nunchuk implementation: Jiawen
+- Design the bullet data structure: Qingyue
+- handle the blood drawing: Qingyue
+- Makefile: Jiawen    

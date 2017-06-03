@@ -1,0 +1,9 @@
+Jeremy DeFossett
+Lab 10
+report.txt
+
+Learned:
+In this lab we learned how to create a new git branch, and work with interrupts, specifically in using these to slow down the display of the leds.
+
+Difficulties
+We had trouble with slowing the led counter based on interrupts, but with the help of Gleb we were able to overcome this.

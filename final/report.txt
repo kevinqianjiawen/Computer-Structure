@@ -1,0 +1,16 @@
+Qingyue Long(qinglong)
+Partner: Jiawen Qian (jiawqian)
+
+My Task: 
+- Come up the idea: Collaborative
+- Store image to array
+- Two collision function
+- malloc the space for 2-D image array
+- Design the bullet data structure
+- handle the blood drawing
+ 
+Jiawen and I decided to design a elaborate plane shooting game, to do this, we cannot just draw some simple blockes to represent plane, since it's so ugly. Hence we have to draw plane image. If we read file from SD card every single time, the efficiency will be really low, so we need to store the plane image into a two dimentional array. I created double pointer int array for each image and malloc the space according to the size of image. In our game, the bullet is important, if we want to shoot successionally, we have to design a data structure for bullet, and create a array contain these bullet structure in order to record and make some changes of each bullet's position. We also need to handle the collision between player's plane and enermy's, the collison between bullet and plane, and the collision between plane and heart. So I create collision function to handle every case.
+
+Challenges: We tried to make a function which takes filename, width and height of image and output the two dimentional array. Thus we can make our code concicer. We indeed tried so many times in several different ways. But we still cannot draw the image correctly with this method. So the only choice is to create the store_image function for each image we want to draw.
+
+If I have more time to start the project over. I really want to change the duplicate codes to function if possible. For example the malloc part and the store image part.
